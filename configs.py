@@ -14,7 +14,7 @@ class Settings:
     batch_scheduler = True
     num_cycles = 0.5
     num_warmup_steps = 0
-    epochs = 4
+    epochs = 10
     encoder_lr = 2e-5
     decoder_lr = 2e-5
     min_lr = 1e-6

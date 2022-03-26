@@ -27,6 +27,7 @@ def get_result(oof_df):
     preds = oof_df['pred'].values
     score = get_score(labels, preds)
     logger.info(f'Score: {score:<.4f}')
+    return score
 
 
 def train_loop(folds, fold):
@@ -235,5 +236,6 @@ if __name__ == '__main__':
 
     oof_df = oof_df.reset_index(drop=True)
     logger.info(f"========== CV ==========")
-    get_result(oof_df)
+    score = get_result(oof_df)
+    wandb.log({'cv score': score})
     oof_df.to_pickle(OUTPUT_DIR / 'oof_df.pkl')
